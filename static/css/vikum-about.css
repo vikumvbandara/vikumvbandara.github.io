@@ -121,8 +121,9 @@ strong { font-weight: 700; }
 }
 
 .nav-submenu { position: relative; }
-.nav-submenu summary { color: var(--foreground); cursor: pointer; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 4px; }
-.nav-submenu summary:hover, .nav-submenu[open] summary { color: var(--foreground); }
+.nav-submenu summary { color: var(--muted); cursor: pointer; list-style: none; }
+.nav-submenu summary::-webkit-details-marker { display: none; }
+.nav-submenu summary:hover { color: var(--foreground); text-decoration: underline; }
 .nav-submenu-links { margin: 8px 0 0 12px; padding: 4px 14px; border-left: 2px solid var(--rule); background: var(--background); }
 .nav-submenu-links a { display: block; padding: 4px 0; white-space: nowrap; }
 .submenu-show, .submenu-hide { font-size: 11px; margin-left: 8px; }
