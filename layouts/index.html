@@ -26,7 +26,7 @@
       <nav class="site-nav" aria-label="Main navigation">
         <a href="{{ "" | relURL }}" aria-current="page">Home</a>
         <a href="{{ "about/" | relURL }}">About</a>
-        <a href="#research">Research</a>
+        {{ partial "research-menu.html" . }}
         {{ partial "literature-menu.html" . }}
         <a href="#contact">Contact</a>
       </nav>

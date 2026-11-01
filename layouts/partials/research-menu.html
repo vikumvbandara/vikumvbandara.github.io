@@ -1,0 +1,8 @@
+<details class="nav-submenu" open>
+  <summary>Research <span class="submenu-show">Show submenu +</span><span class="submenu-hide">Hide submenu −</span></summary>
+  <div class="nav-submenu-links">
+    <a href="{{ if .IsHome }}#research{{ else }}{{ "about/#research" | relURL }}{{ end }}">Overview</a>
+    <a href="{{ "research/collatz-conjecture/" | relURL }}"{{ if eq .RelPermalink ("research/collatz-conjecture/" | relURL) }} aria-current="page"{{ end }}>Collatz conjecture</a>
+    <a href="{{ "research/pythagorean-soliton/" | relURL }}"{{ if eq .RelPermalink ("research/pythagorean-soliton/" | relURL) }} aria-current="page"{{ end }}>Pythagorean soliton</a>
+  </div>
+</details>
