@@ -121,10 +121,16 @@ strong { font-weight: 700; }
 }
 
 .nav-submenu { position: relative; }
-.nav-submenu summary { color: var(--muted); cursor: pointer; }
+.nav-submenu summary { color: var(--foreground); cursor: pointer; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 4px; }
 .nav-submenu summary:hover, .nav-submenu[open] summary { color: var(--foreground); }
-.nav-submenu-links { position: absolute; z-index: 2; top: 100%; left: 0; min-width: 100%; padding: 12px 16px; border: 1px solid var(--rule); background: var(--background); box-shadow: 0 4px 12px #00000014; }
+.nav-submenu-links { margin: 8px 0 0 12px; padding: 4px 14px; border-left: 2px solid var(--rule); background: var(--background); }
 .nav-submenu-links a { display: block; padding: 4px 0; white-space: nowrap; }
+.submenu-show, .submenu-hide { font-size: 11px; margin-left: 8px; }
+.nav-submenu .submenu-hide { display: none; }
+.nav-submenu[open] .submenu-show { display: none; }
+.nav-submenu[open] .submenu-hide { display: inline; }
+.poem-page { width: max-content; max-width: 100%; margin-inline: auto; }
+.poem-page h1, .poem-page h2, .poem-page h2 + p, .poem-page h2 + p + p { text-align: center; }
 @media (max-width: 700px) {
   .nav-submenu { flex-basis: 100%; }
   .nav-submenu-links { position: static; margin-top: 8px; box-shadow: none; }

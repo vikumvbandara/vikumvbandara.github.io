@@ -1,6 +1,7 @@
 ---
 title: "Kipling’s poem"
 draft: false
+poem: true
 description: "An excerpt of If— by Rudyard Kipling."
 ---
 

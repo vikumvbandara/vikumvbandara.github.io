@@ -15,7 +15,7 @@
       }
     } catch (error) { /* The page also works when storage is unavailable. */ }
   </script>
-  <link rel="stylesheet" href="{{ "css/vikum-about.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/vikum-about.css?v=2" | relURL }}">
   <script src="{{ "js/vikum-about.js" | relURL }}" defer></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
       </nav>
     </header>
 
-    <main id="main" class="about-content">
+    <main id="main" class="about-content{{ if .Params.poem }} poem-page{{ end }}">
       <h1>{{ .Title }}</h1>
       {{ .Content }}
     </main>
