@@ -4,6 +4,6 @@ description: "Research topics — Vikum Bandara."
 ---
 
 - [Collatz conjecture](collatz-conjecture/)
-- [Pythagorean soliton](pythagorean-soliton/)
+- [Bulgarian solitaire](bulgarian-solitaire/)
 
 [Research overview](../about/#research)
