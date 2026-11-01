@@ -1,0 +1,28 @@
+.poem-page {
+  width: min(100%, 680px);
+  margin-inline: auto;
+  padding: clamp(24px, 5vw, 44px) clamp(12px, 4vw, 40px);
+  color: #111;
+  background: #f2f1ed;
+  border: 1px solid #e4e2dc;
+  box-shadow: 0 3px 18px #00000009;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 2.5vw, 20px);
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+.poem-page h1 {
+  margin: 0 0 4px;
+  font-family: inherit;
+  font-size: clamp(30px, 5vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.poem-page h1 + p {
+  margin-bottom: 18px;
+  font-size: 1.1em;
+}
+.poem-page p { margin: 0 0 16px; }
+.poem-page p:last-child { margin: 24px 0 0; font-size: 13px; }
+.poem-page a { color: #4c4b47; }

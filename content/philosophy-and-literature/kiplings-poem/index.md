@@ -1,13 +1,11 @@
 ---
-title: "Kipling’s poem"
+title: "If—"
 draft: false
 poem: true
 description: "If— by Rudyard Kipling, the complete poem."
 ---
 
-## If—
-
-By Rudyard Kipling
+by Rudyard Kipling
 
 If you can keep your head when all about you\
 Are losing theirs and blaming it on you,\
