@@ -3,6 +3,8 @@
   margin-inline: auto;
   padding: clamp(24px, 5vw, 44px) clamp(12px, 4vw, 40px);
   color: var(--foreground);
+  /* Exact stack inherited by .site-nav from body in vikum-about.css. */
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   line-height: 1.35;
   text-align: center;
   overflow-wrap: break-word;
