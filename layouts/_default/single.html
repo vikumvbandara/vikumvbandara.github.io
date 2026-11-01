@@ -31,7 +31,7 @@
         <a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink ("about/" | relURL) }} aria-current="page"{{ end }}>About</a>
         <a href="{{ "about/#research" | relURL }}">Research</a>
         <a href="{{ "about/#teaching" | relURL }}">Teaching</a>
-        <a href="{{ "philosophy-and-literature/" | relURL }}"{{ if eq .RelPermalink ("philosophy-and-literature/" | relURL) }} aria-current="page"{{ end }}>Philosophy and Literature</a>
+        {{ partial "literature-menu.html" . }}
         <a href="{{ "about/#contact" | relURL }}">Contact</a>
       </nav>
     </header>

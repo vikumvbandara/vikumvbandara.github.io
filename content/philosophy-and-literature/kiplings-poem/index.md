@@ -1,7 +1,7 @@
 ---
-title: "Philosophy and Literature"
+title: "Kipling’s poem"
 draft: false
-description: "Philosophy and Literature — Vikum Bandara."
+description: "An excerpt of If— by Rudyard Kipling."
 ---
 
 ## If—
@@ -34,3 +34,4 @@ If neither foes nor loving friends can hurt you,\
 If all men count with you, but none too much;\
 Yours is the Earth and everything that’s in it,\
 And—which is more—you’ll be a Man, my son!
+

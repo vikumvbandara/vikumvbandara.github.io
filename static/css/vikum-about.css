@@ -119,3 +119,13 @@ strong { font-weight: 700; }
   .site-header { padding: 0 0 24px; }
   .site-footer { padding-bottom: 0; }
 }
+
+.nav-submenu { position: relative; }
+.nav-submenu summary { color: var(--muted); cursor: pointer; }
+.nav-submenu summary:hover, .nav-submenu[open] summary { color: var(--foreground); }
+.nav-submenu-links { position: absolute; z-index: 2; top: 100%; left: 0; min-width: 100%; padding: 12px 16px; border: 1px solid var(--rule); background: var(--background); box-shadow: 0 4px 12px #00000014; }
+.nav-submenu-links a { display: block; padding: 4px 0; white-space: nowrap; }
+@media (max-width: 700px) {
+  .nav-submenu { flex-basis: 100%; }
+  .nav-submenu-links { position: static; margin-top: 8px; box-shadow: none; }
+}

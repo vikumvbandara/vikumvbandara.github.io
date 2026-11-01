@@ -24,15 +24,15 @@
     <header class="site-header">
       <div class="terminal-path" aria-label="Site location">
         <a class="site-name" href="{{ "" | relURL }}">Vikum Bandara</a><span class="prompt" aria-hidden="true">:~$</span>
-        <a class="path-name" href="{{ .RelPermalink }}">about</a><span aria-hidden="true">/</span><span class="cursor" aria-hidden="true"></span>
+        <a class="path-name" href="{{ .RelPermalink }}">{{ .Title }}</a><span aria-hidden="true">/</span><span class="cursor" aria-hidden="true"></span>
       </div>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="{{ "" | relURL }}">Home</a>
-        <a href="{{ .RelPermalink }}" aria-current="page">About</a>
-        <a href="#research">Research</a>
-        <a href="#teaching">Teaching</a>
-        <a href="{{ "philosophy-and-literature/" | relURL }}"{{ if eq .RelPermalink ("philosophy-and-literature/" | relURL) }} aria-current="page"{{ end }}>Philosophy and Literature</a>
-        <a href="#contact">Contact</a>
+        <a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink ("about/" | relURL) }} aria-current="page"{{ end }}>About</a>
+        <a href="{{ "about/#research" | relURL }}">Research</a>
+        <a href="{{ "about/#teaching" | relURL }}">Teaching</a>
+        {{ partial "literature-menu.html" . }}
+        <a href="{{ "about/#contact" | relURL }}">Contact</a>
       </nav>
     </header>
 
