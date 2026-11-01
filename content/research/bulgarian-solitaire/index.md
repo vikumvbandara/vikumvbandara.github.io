@@ -6,8 +6,6 @@ manuscript: true
 
 *From “Bulgarian solitaire with distinguishable cells,” by Vikum Bandara and Svetlana Poznanović.*
 
-The introduction below reproduces the manuscript text and its first figure. Numbered citations link to the References section below; section references refer to sections of the linked preprint, not sections of this page.
-
 ## 1 Introduction
 
 {{< bulgarian-introduction >}}
