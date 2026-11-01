@@ -1,0 +1,5 @@
+.research-figure { margin: 28px 0; }
+.research-figure img { width: min(100%, 725px); height: auto; margin: 0 auto 12px; }
+.research-figure figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; }
+.research-equation { margin: 20px 0; text-align: center; overflow-x: auto; max-width: 100%; }
+.research-equation math { padding: 8px 0; }

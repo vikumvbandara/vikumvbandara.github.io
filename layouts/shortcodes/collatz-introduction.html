@@ -1,0 +1,31 @@
+<h3>1.1 Mathematical background of the Collatz conjecture</h3>
+<p>In 1937, the German mathematician Lothar Collatz formulated a conjecture asserting that, regardless of the initial positive integer, the iterative sequence defined by the rule “divide by 2 if even, multiply by 3 and add 1 if odd” will eventually reach 1 <a href="{{ "papers/collatz-cryptography.pdf#page=19" | relURL }}">[1]</a>. What appears to be a trivial observation endures as a profound enigma, with neither proof nor counterexample discovered to date. Paul Erdős famously remarked that mathematics may not be prepared for such problems <a href="{{ "papers/collatz-cryptography.pdf#page=20" | relURL }}">[3]</a>, a sentiment reinforced by Jeffrey Lagarias's comprehensive survey on related results <a href="{{ "papers/collatz-cryptography.pdf#page=20" | relURL }}">[6]</a>. More recent results includes significant theoretical advances: Ren <a href="{{ "papers/collatz-cryptography.pdf#page=20" | relURL }}">[8]</a> demonstrated that validating his Reduced Collatz Conjecture (RCC) would suffice to prove the original conjecture, while Terence Tao, perhaps the most notable recent development, demonstrated that most Collatz map orbits achieve nearly bounded values <a href="{{ "papers/collatz-cryptography.pdf#page=20" | relURL }}">[10]</a>. Also, recently <a href="{{ "papers/collatz-cryptography.pdf#page=19" | relURL }}">[2]</a> presented an algebraic construction of near-bent functions, emphasizing their cryptographic applications due to properties like high nonlinearity and resilience against attacks. It explores the use of these functions in designing secure cryptographic systems. The findings contribute to the broader understanding of Boolean functions in cryptography, particularly in enhancing security measures.</p>
+
+<h3>1.2 The 3x + 1 Problem <a href="{{ "papers/collatz-cryptography.pdf#page=20" | relURL }}">[6]</a></h3>
+<p>Consider the set ℤ<sup>+</sup> of positive integers and let <var>n</var> ∈ ℤ<sup>+</sup>. Collatz introduced the map</p>
+<div class="research-equation"><math display="block" aria-label="T of n equals n divided by 2 if n is even, and 3 n plus 1 if n is odd"><mrow><mi>T</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mo>{</mo><mtable columnalign="left left"><mtr><mtd><mfrac><mi>n</mi><mn>2</mn></mfrac></mtd><mtd><mtext>if n is even,</mtext></mtd></mtr><mtr><mtd><mn>3</mn><mi>n</mi><mo>+</mo><mn>1</mn></mtd><mtd><mtext>if n is odd.</mtext></mtd></mtr></mtable></mrow></math></div>
+<p>By repeatedly applying <var>T</var>, one obtains an orbit of <var>n</var>:</p>
+<p class="research-equation">T(n), T<sup>(2)</sup>(n) = T(T(n)), …, T<sup>(k)</sup>(n) = T(T<sup>(k−1)</sup>(n)), k ∈ ℤ<sup>+</sup>.</p>
+<p>The Collatz conjecture asserts that the sequence obtained by iterating <var>T</var> always reaches 1, no matter from which positive integer <var>n</var> begins the sequence with. One way to think about the 3x + 1 problem is as a directed graph with positive integer vertices and directed edges from <var>n</var> to T(n). In honor of Collatz, we call this graph the <em>Collatz graph of T(n)</em>. Figure 1 depicts a section of the Collatz graph of T(n).</p>
+<p>A directed graph is said to be <em>weakly connected</em>, if it is connected when viewed as an undirected graph, i.e., for any two vertices, there is a path of edges joining them, ignoring the directions on the edges. The 3x + 1 Conjecture can be formulated in terms of the Collatz graph as follows.</p>
+
+<h3>1.3 The 3x + 1 Conjecture (First form)</h3>
+<p>Consider the Collatz graph of T(n) over the set of positive integers. This graph is weakly connected, and the sequence of iterates</p>
+<p class="research-equation">(n, T(n), T<sup>(2)</sup>(n), T<sup>(3)</sup>(n), …)</p>
+<figure class="research-figure" id="figure-1">
+  <img src="{{ "images/collatz-introduction-graph.png" | relURL }}" width="725" height="528" alt="The paper’s directed Collatz graph, with labeled integer branches joining paths through 32, 16, 8, 4, 2, and 1." loading="lazy">
+  <figcaption>Figure 1: A portion of the Collatz graph</figcaption>
+</figure>
+<p>is called the trajectory of <var>n</var>. For <var>n</var> &gt; 0, there are three possible long-term behaviors of such trajectories:</p>
+<ul>
+  <li>Convergent trajectory. For some <var>n</var> ∈ ℤ<sup>+</sup>, T<sup>(k)</sup>(n) = 1, then the trajectory of <var>n</var> eventually reaches 1.</li>
+  <li>Non-trivial cyclic trajectory. The sequence {T<sup>(k)</sup>(n)} becomes periodic but does not reach 1. In this case, the trajectory falls into a repeating cycle other than the trivial loop {1,4,2}.</li>
+  <li>Divergent trajectory. lim<sub>k→∞</sub> T<sup>(k)</sup>(n) = ∞.</li>
+</ul>
+<p>The 3x + 1 Conjecture asserts that all trajectories of <var>n</var> are convergent. It is certainly true that T<sup>(k)</sup>(n) = 1 cannot occur without some T<sup>(k)</sup>(n) ≤ n occurring. The least positive integer <var>k</var> for which T<sup>(k)</sup>(n) ≤ n, is called the <em>stopping time</em> σ(n) of <var>n</var>, and set σ(n) = ∞ if no <var>k</var> occurs with T<sup>(k)</sup>(n) ≤ n. Also, the least positive <var>k</var> for which T<sup>(k)</sup>(n) = 1 is called the <em>total stopping time</em> σ<sub>∞</sub>(n) of <var>n</var>, and set σ<sub>∞</sub>(n) = ∞ if no such <var>k</var> occurs.</p>
+<p><strong>Stopping time σ(n) =:</strong> Number of steps on the Collatz sequence of <var>n</var> until T<sup>(k)</sup>(n) ≤ n.</p>
+<p><strong>Total stopping time σ<sub>∞</sub>(n) =:</strong> Number of steps on the Collatz sequence of <var>n</var> until T<sup>(k)</sup>(n) = 1.</p>
+
+<h3>1.3.1 Conjecture on the Divergent trajectories</h3>
+<p>The function T: ℤ → ℤ has no divergent trajectories, i.e., there exists no integer n<sub>0</sub> for which,</p>
+<p class="research-equation">lim<sub>k→∞</sub> |T<sup>(k)</sup>(n<sub>0</sub>)| = ∞.</p>
