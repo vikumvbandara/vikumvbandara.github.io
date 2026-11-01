@@ -6,4 +6,4 @@ description: "Philosophy and Literature — Vikum Bandara."
 
 ## Reading
 
-[Kipling’s poem](kiplings-poem/) — an excerpt of *If—* by Rudyard Kipling.
+[Kipling’s poem](kiplings-poem/) — *If—* by Rudyard Kipling.

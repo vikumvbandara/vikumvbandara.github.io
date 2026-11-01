@@ -130,7 +130,7 @@ strong { font-weight: 700; }
 .nav-submenu[open] .submenu-show { display: none; }
 .nav-submenu[open] .submenu-hide { display: inline; }
 .poem-page { width: max-content; max-width: 100%; margin-inline: auto; }
-.poem-page h1, .poem-page h2, .poem-page h2 + p, .poem-page h2 + p + p { text-align: center; }
+.poem-page h1, .poem-page h2, .poem-page h2 + p { text-align: center; }
 @media (max-width: 700px) {
   .nav-submenu { flex-basis: 100%; }
   .nav-submenu-links { position: static; margin-top: 8px; box-shadow: none; }
