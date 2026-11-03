@@ -1,0 +1,57 @@
+<section class="blackjack" data-blackjack aria-label="Blackjack game">
+  <div class="bj-scoreboard" aria-label="Results this visit">
+    <div><span>Wins</span><strong data-wins>0</strong></div>
+    <div><span>Losses</span><strong data-losses>0</strong></div>
+    <div><span>Ties</span><strong data-ties>0</strong></div>
+    <p>Just for fun.<br>No betting.</p>
+  </div>
+  <div class="bj-layout">
+    <div class="bj-table" tabindex="0" aria-label="Card table" aria-describedby="bj-keyboard">
+      <div class="bj-table-top"><span>Vikum’s card room</span><span data-round>Ready to deal</span></div>
+      <section class="bj-hand" aria-labelledby="bj-dealer-title">
+        <div class="bj-hand-heading"><h2 id="bj-dealer-title">Dealer</h2><span data-dealer-total>—</span></div>
+        <ul class="bj-cards" data-dealer-cards aria-label="Dealer cards"><li class="bj-card bj-placeholder" aria-label="No cards yet">?</li></ul>
+      </section>
+      <div class="bj-message" role="status" aria-live="polite" aria-atomic="true">
+        <strong data-result>Take a seat.</strong>
+        <p data-message>Choose “Deal a hand” to begin.</p>
+      </div>
+      <section class="bj-hand" aria-labelledby="bj-player-title">
+        <div class="bj-hand-heading"><h2 id="bj-player-title">You</h2><span data-player-total>—</span></div>
+        <ul class="bj-cards" data-player-cards aria-label="Your cards"><li class="bj-card bj-placeholder" aria-label="No cards yet">?</li></ul>
+      </section>
+      <div class="bj-controls">
+        <button type="button" data-deal class="bj-primary" disabled>Deal a hand</button>
+        <button type="button" data-hit disabled>Hit <kbd>H</kbd></button>
+        <button type="button" data-stand disabled>Stand <kbd>S</kbd></button>
+      </div>
+      <p id="bj-keyboard" class="bj-note">With the table focused: <kbd>H</kbd> hit · <kbd>S</kbd> stand · <kbd>N</kbd> next hand.</p>
+      <noscript><p>Enable JavaScript to play. The instructions below are always available.</p></noscript>
+    </div>
+    <aside class="bj-instructions" aria-labelledby="bj-instructions-title">
+      <p class="bj-eyebrow">A quick guide</p>
+      <h2 id="bj-instructions-title">How to play</h2>
+      <p>Beat the dealer by getting closer to <strong>21</strong> without going over.</p>
+      <ol>
+        <li><strong>Deal a hand.</strong> You and the dealer each get two cards. One of the dealer’s cards stays face down.</li>
+        <li><strong>Hit</strong> to take another card. You can hit again as long as your total is below 21.</li>
+        <li><strong>Stand</strong> when you want to keep your total. At 21, you stand automatically.</li>
+        <li>The dealer reveals their hand and draws until reaching <strong>17 or more</strong>. The higher total wins.</li>
+      </ol>
+      <h3>What are the cards worth?</h3>
+      <dl>
+        <div><dt>2–10</dt><dd>The number on the card</dd></div>
+        <div><dt>J, Q, K</dt><dd>10 points each</dd></div>
+        <div><dt>Ace</dt><dd>11, or 1 if 11 would put you over 21</dd></div>
+      </dl>
+      <h3>A few table rules</h3>
+      <ul>
+        <li><strong>Bust:</strong> go over 21 and you lose immediately. If the dealer busts, you win.</li>
+        <li><strong>Blackjack:</strong> an ace plus a 10-point card in your first two cards. It beats any ordinary 21. Two blackjacks tie.</li>
+        <li><strong>Push:</strong> equal totals are a tie.</li>
+        <li>The dealer stands on all 17s, including “soft 17” (an ace counted as 11).</li>
+      </ul>
+      <p class="bj-note">This practice table uses a freshly shuffled 52-card deck for every hand. No splitting, doubling, insurance, or wagers. Results reset when you reload the page.</p>
+    </aside>
+  </div>
+</section>

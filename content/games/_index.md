@@ -11,3 +11,9 @@ Take a break. Play a little.
 Keep the ball in play, bounce off the bumpers, and try to beat your best score. Three balls, two flippers, and one more try.
 
 [Play pinball →](pinball/)
+
+## Blackjack
+
+Take a seat at the card table. Get closer to 21 than the dealer without going over, and learn the rules as you play. Just for fun, with no betting.
+
+[Play blackjack →](blackjack/)
