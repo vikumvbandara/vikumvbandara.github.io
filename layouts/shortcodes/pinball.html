@@ -1,0 +1,41 @@
+<section class="pinball" aria-label="Pinball game" data-pinball>
+  <div class="pinball-scoreboard" aria-label="Game scores">
+    <div><span>Score</span><strong data-score>0</strong></div>
+    <div><span>Best</span><strong data-best>0</strong></div>
+    <div><span>Balls left</span><strong data-balls>3</strong></div>
+  </div>
+  <div class="pinball-layout">
+    <div class="pinball-machine">
+      <canvas width="480" height="720" tabindex="0" aria-label="Pinball table" aria-describedby="pinball-instructions pinball-status">
+        Pinball requires a browser with canvas support. Use the left and right arrow keys for the flippers and Space to launch.
+      </canvas>
+      <div class="pinball-touch-controls" aria-label="Flipper controls">
+        <button type="button" data-flipper="left" aria-label="Left flipper" disabled>← Left</button>
+        <button type="button" data-flipper="right" aria-label="Right flipper" disabled>Right →</button>
+      </div>
+    </div>
+    <div class="pinball-panel">
+      <p class="pinball-label">A little arcade break</p>
+      <h2>Keep it rolling.</h2>
+      <p id="pinball-status" role="status" data-status>Loading the table…</p>
+      <div class="pinball-actions">
+        <button type="button" class="pinball-primary" data-launch disabled>Launch ball</button>
+        <button type="button" data-pause disabled>Pause</button>
+        <button type="button" data-restart disabled>New game</button>
+      </div>
+    </div>
+    <div id="pinball-instructions" class="pinball-instructions">
+        <h3>How to play</h3>
+        <dl>
+          <div><dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Left / right flipper</dd></div>
+          <div><dt><kbd>A</kbd> <kbd>D</kbd></dt><dd>Also work</dd></div>
+          <div><dt><kbd>Space</kbd></dt><dd>Launch a ball</dd></div>
+          <div><dt><kbd>P</kbd></dt><dd>Pause / resume</dd></div>
+        </dl>
+        <p>Click the table to use the keyboard. On a phone, hold the flipper buttons below the table.</p>
+        <p>Bumpers earn <strong>100</strong> points. The side kickers earn <strong>25</strong>. Keep the ball above the flippers!</p>
+        <p class="pinball-note">Your best score is saved in this browser when storage is available.</p>
+      <noscript><p>Enable JavaScript to play pinball.</p></noscript>
+    </div>
+  </div>
+</section>

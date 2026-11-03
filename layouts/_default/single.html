@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="{{ "css/vikum-about.css?v=4" | relURL }}">
   {{ if .Params.poem }}<link rel="stylesheet" href="{{ "css/poem.css?v=4" | relURL }}">{{ end }}
   {{ if .Params.manuscript }}<link rel="stylesheet" href="{{ "css/research.css?v=1" | relURL }}">{{ end }}
+  {{ if .Params.pinball }}
+  <link rel="stylesheet" href="{{ "css/pinball.css?v=2" | relURL }}">
+  <script type="module" src="{{ "js/pinball.mjs?v=1" | relURL }}"></script>
+  {{ end }}
   <script src="{{ "js/vikum-about.js" | relURL }}" defer></script>
 </head>
 <body>
@@ -34,6 +38,7 @@
         {{ partial "research-menu.html" . }}
         <a href="{{ "about/#teaching" | relURL }}">Teaching</a>
         {{ partial "literature-menu.html" . }}
+        {{ partial "games-menu.html" . }}
         <a href="{{ "about/#contact" | relURL }}">Contact</a>
       </nav>
     </header>
