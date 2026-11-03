@@ -23,6 +23,12 @@
         <button type="button" data-pause disabled>Pause</button>
         <button type="button" data-restart disabled>New game</button>
       </div>
+      <div class="pinball-audio">
+        <button type="button" data-music aria-pressed="false">Music: off</button>
+        <label for="pinball-volume">Volume</label>
+        <input id="pinball-volume" type="range" min="0" max="100" value="25" aria-label="Music volume">
+        <p class="pinball-note" data-music-status role="status">Turn on music for an arcade soundtrack while you play.</p>
+      </div>
     </div>
     <div id="pinball-instructions" class="pinball-instructions">
         <h3>How to play</h3>
@@ -38,4 +44,27 @@
       <noscript><p>Enable JavaScript to play pinball.</p></noscript>
     </div>
   </div>
+  <section class="pinball-leaderboard" aria-labelledby="pinball-leaderboard-title" data-leaderboard>
+    <div class="pinball-leaderboard-heading">
+      <div><p class="pinball-label">The high-score club</p><h2 id="pinball-leaderboard-title">Leaderboard</h2></div>
+      <button type="button" data-refresh-scores>Refresh scores</button>
+    </div>
+    <p class="pinball-note">All visitors · Top 10 scores</p>
+    <p data-leaderboard-status role="status">Loading scores…</p>
+    <table hidden data-leaderboard-table>
+      <caption class="pinball-sr-only">Top ten pinball scores from all visitors</caption>
+      <thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Score</th></tr></thead>
+      <tbody data-leaderboard-rows></tbody>
+    </table>
+    <form data-score-form hidden>
+      <p>Game over! Submit <strong data-final-score>0</strong> points to the shared leaderboard.</p>
+      <label for="pinball-player">Display name</label>
+      <div class="pinball-score-entry">
+        <input id="pinball-player" name="player" maxlength="20" minlength="1" required autocomplete="nickname" placeholder="Your arcade name">
+        <button type="submit" class="pinball-primary">Submit score</button>
+      </div>
+      <p class="pinball-note">Your display name and score will be visible to everyone.</p>
+      <p role="status" data-submit-status></p>
+    </form>
+  </section>
 </section>

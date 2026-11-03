@@ -1,5 +1,9 @@
 import { PinballGame, WIDTH, HEIGHT, STEP, BALL_RADIUS, walls, bumpers, kickers } from './pinball-engine.mjs';
 
+import { ArcadeMusic } from './pinball-music.mjs';
+import { Leaderboard } from './pinball-leaderboard.mjs?v=3';
+import { leaderboardConfig } from './pinball-config.mjs?v=1';
+
 const root = document.querySelector('[data-pinball]');
 if (root) {
   const canvas = root.querySelector('canvas');
@@ -25,6 +29,32 @@ function init(root, canvas, ctx) {
     if (Number.isSafeInteger(value) && value > 0) savedBest = value;
   } catch { /* Storage is optional. */ }
   const game = new PinballGame(savedBest);
+  const leaderboard = new Leaderboard(root, leaderboardConfig);
+  const music = new ArcadeMusic();
+  const musicButton = root.querySelector('[data-music]');
+  const musicStatus = root.querySelector('[data-music-status]');
+  musicButton.addEventListener('click', async () => {
+    musicButton.disabled = true;
+    try {
+      if (music.enabled) music.disable();
+      else await music.enable();
+      musicButton.textContent = music.enabled ? 'Music: on' : 'Music: off';
+      musicButton.setAttribute('aria-pressed', String(music.enabled));
+      musicStatus.textContent = music.enabled ? 'Music plays during your game and pauses when you take a break.' : 'Music is off.';
+    } catch {
+      musicStatus.textContent = 'Audio could not start. Try turning music on again.';
+    } finally { musicButton.disabled = false; }
+  });
+  root.querySelector('#pinball-volume').addEventListener('input', event => music.setVolume(Number(event.target.value) / 100));
+  window.addEventListener('pagehide', () => music.disable());
+  let palette;
+  function updatePalette() {
+    const style = getComputedStyle(document.documentElement);
+    palette = Object.fromEntries(['background','foreground','muted','link','rule','surface','selection'].map(key => [key, style.getPropertyValue('--' + key).trim()]));
+  }
+  updatePalette();
+  new MutationObserver(updatePalette).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updatePalette);
   const keys = new Set();
   const pointers = { left: new Set(), right: new Set() };
   const flipperButtons = [...root.querySelectorAll('[data-flipper]')];
@@ -45,6 +75,7 @@ function init(root, canvas, ctx) {
     flipperButtons.forEach(button => { button.dataset.held = 'false'; });
   }
   function sync() {
+    music.setPlaying(game.state === 'playing' && !document.hidden);
     if (score.textContent !== game.score.toLocaleString()) score.textContent = game.score.toLocaleString();
     if (best.textContent !== game.best.toLocaleString()) best.textContent = game.best.toLocaleString();
     if (balls.textContent !== String(game.balls)) balls.textContent = String(game.balls);
@@ -57,6 +88,7 @@ function init(root, canvas, ctx) {
       try { localStorage.setItem('vikum-pinball-best', String(savedBest)); } catch { /* Optional persistence. */ }
     }
     if (game.state !== previousState) {
+      if (game.state === 'over') leaderboard.finish(game.score);
       status.textContent = {
         ready: game.balls === 3 ? 'Ready when you are. Launch your first ball.' : `Ball lost. ${game.balls} ${game.balls === 1 ? 'ball' : 'balls'} left — launch again!`,
         playing: 'Ball in play. Hit the bumpers and keep it rolling!',
@@ -67,11 +99,18 @@ function init(root, canvas, ctx) {
     }
   }
   function focusTable() { canvas.focus({ preventScroll: true }); }
-  launch.addEventListener('click', () => { game.launch(); focusTable(); sync(); });
+  function launchBall() {
+    if (game.state !== 'ready') return;
+    leaderboard.start();
+    game.launch();
+    sync();
+  }
+  launch.addEventListener('click', () => { launchBall(); focusTable(); });
   pause.addEventListener('click', () => { clearControls(); game.togglePause(); focusTable(); sync(); });
   restart.disabled = false;
   restart.addEventListener('click', () => {
     clearControls();
+    leaderboard.reset();
     game.reset();
     previousState = '';
     focusTable();
@@ -116,13 +155,13 @@ function init(root, canvas, ctx) {
     });
   });
   root.addEventListener('keydown', event => {
-    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.altKey || event.ctrlKey || event.metaKey || event.target.matches('input, textarea, select')) return;
     if (['ArrowLeft', 'ArrowRight', 'KeyA', 'KeyD'].includes(event.code)) {
       event.preventDefault();
       keys.add(event.code);
     } else if (event.code === 'Space' && event.target === canvas) {
       event.preventDefault();
-      if (!event.repeat) { game.launch(); sync(); }
+      if (!event.repeat) launchBall();
     } else if (event.code === 'KeyP' && !event.repeat) {
       event.preventDefault();
       clearControls();
@@ -179,59 +218,69 @@ function init(root, canvas, ctx) {
       canvas.height = HEIGHT * ratio;
     }
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    ctx.fillStyle = '#101d28';
+    ctx.fillStyle = palette.background;
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
     for (let x = 42; x < 420; x += 24) {
-      for (let y = 64; y < 690; y += 24) circle(x, y, 1, '#263743');
+      for (let y = 64; y < 690; y += 24) circle(x, y, 1, palette.rule);
     }
-    ctx.fillStyle = '#172936';
+    ctx.fillStyle = palette.surface;
     ctx.fillRect(424, 194, 38, 526);
-    circle(222, 280, 131, null, '#25414c');
-    circle(222, 280, 140, null, '#20333f');
-    label('P I N B A L L', 222, 100, 24, '#b4f3e4');
-    label('KEEP IT ROLLING', 222, 126, 10, '#83a1af');
+    circle(222, 280, 131, null, palette.rule);
+    circle(222, 280, 140, null, palette.rule);
+    label('P I N B A L L', 222, 100, 24, palette.foreground);
+    label('KEEP IT ROLLING', 222, 126, 10, palette.muted);
     for (const wall of walls) {
-      strokeLine(wall, '#263f4e', 10);
-      strokeLine(wall, '#6d8d9e', 3);
+      strokeLine(wall, palette.rule, 10);
+      strokeLine(wall, palette.muted, 3);
     }
-    strokeLine([420, 110, 420, 195], '#71dcc5', 2);
+    strokeLine([420, 110, 420, 195], palette.link, 2);
     bumpers.forEach((bumper, index) => {
       const active = !reducedMotion.matches && game.time - (game.hits.get(`bumper-${index}`) ?? -Infinity) < .16;
-      circle(bumper.x, bumper.y, bumper.radius + 9, null, '#34535b', 2);
-      circle(bumper.x, bumper.y, bumper.radius, active ? '#d4fff3' : '#71dcc5', '#b4f3e4', 2);
-      circle(bumper.x, bumper.y, bumper.radius - 8, '#183e43', '#4f9d90');
-      label('100', bumper.x, bumper.y + 5, 13, '#c7fff1');
+      circle(bumper.x, bumper.y, bumper.radius + 9, null, palette.rule, 2);
+      circle(bumper.x, bumper.y, bumper.radius, active ? palette.selection : palette.link, palette.foreground, 2);
+      circle(bumper.x, bumper.y, bumper.radius - 8, palette.surface, palette.link);
+      label('100', bumper.x, bumper.y + 5, 13, palette.foreground);
     });
     kickers.forEach(kicker => {
-      strokeLine(kicker, '#543d32', 22);
-      strokeLine(kicker, '#eab17f', 12);
+      strokeLine(kicker, palette.rule, 22);
+      strokeLine(kicker, palette.link, 12);
     });
-    label('25', 74, 433, 11, '#eab17f');
-    label('25', 372, 433, 11, '#eab17f');
-    label('V I K U M ’ S   A R C A D E', 222, 448, 10, '#7493a3');
+    label('25', 74, 433, 11, palette.link);
+    label('25', 372, 433, 11, palette.link);
+    label('V I K U M ’ S   A R C A D E', 222, 448, 10, palette.muted);
     for (const flipper of game.flippers) {
-      strokeLine(game.flipperSegment(flipper), '#2c716b', 24);
-      strokeLine(game.flipperSegment(flipper), '#a0ecda', 18);
-      circle(flipper.x, flipper.y, 6, '#24525a');
+      strokeLine(game.flipperSegment(flipper), palette.rule, 24);
+      strokeLine(game.flipperSegment(flipper), palette.link, 18);
+      circle(flipper.x, flipper.y, 6, palette.background);
     }
-    label('↓  DRAIN  ↓', 222, 700, 10, '#7493a3');
-    for (let y = 682; y < 710; y += 6) strokeLine([433, y, 453, y], '#6d8d9e', 2);
+    label('↓  DRAIN  ↓', 222, 700, 10, palette.muted);
+    for (let y = 682; y < 710; y += 6) strokeLine([433, y, 453, y], palette.muted, 2);
     if (game.state !== 'over') {
       const { x, y } = game.ball;
-      circle(x + 3, y + 4, BALL_RADIUS + 1, '#00000066');
+      // A steady halo stays readable in both themes without flashing.
+      ctx.save();
+      ctx.globalAlpha = .18;
+      circle(x, y, BALL_RADIUS * 2.8, palette.link);
+      ctx.globalAlpha = .3;
+      circle(x, y, BALL_RADIUS * 1.8, palette.link);
+      ctx.restore();
+      ctx.save();
+      ctx.shadowColor = palette.link;
+      ctx.shadowBlur = 22;
       const metal = ctx.createRadialGradient(x - 3, y - 4, 1, x, y, BALL_RADIUS);
       metal.addColorStop(0, '#ffffff');
       metal.addColorStop(.45, '#d5e2ec');
       metal.addColorStop(1, '#708a9d');
-      circle(x, y, BALL_RADIUS, metal);
+      circle(x, y, BALL_RADIUS, metal, palette.link, 1.5);
+      ctx.restore();
     }
     if (game.state !== 'playing') {
-      ctx.fillStyle = '#101d28ee';
+      ctx.fillStyle = palette.background;
       ctx.fillRect(82, 466, 280, 76);
       const title = { ready: 'READY TO ROLL?', paused: 'PAUSED', over: 'GAME OVER' }[game.state];
       const subtitle = { ready: 'SPACE / LAUNCH BALL', paused: 'P / RESUME', over: `${game.score.toLocaleString()} POINTS · PLAY AGAIN?` }[game.state];
-      label(title, 222, 496, 19, '#b4f3e4');
-      label(subtitle, 222, 521, 11, '#a7bfcc');
+      label(title, 222, 496, 19, palette.foreground);
+      label(subtitle, 222, 521, 11, palette.muted);
     }
   }
   function frame(timestamp) {
