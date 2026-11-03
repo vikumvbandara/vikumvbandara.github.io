@@ -5,6 +5,8 @@ export const SUITS = [
   { symbol: '♦', name: 'diamonds', red: true },
 ];
 export const RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+export const STARTING_BALANCE = 100000;
+export const MIN_WAGER = 500;
 
 export function shuffledDeck(random = Math.random) {
   const deck = SUITS.flatMap(suit => RANKS.map(rank => ({ rank, suit })));
@@ -28,6 +30,11 @@ export function handValue(cards) {
 export class BlackjackGame {
   constructor(deckFactory = shuffledDeck) {
     this.deckFactory = deckFactory;
+    this.reset();
+  }
+
+  reset() {
+    if (this.state === 'playing') return false;
     this.state = 'ready';
     this.round = 0;
     this.player = [];
@@ -35,11 +42,19 @@ export class BlackjackGame {
     this.stats = { wins: 0, losses: 0, ties: 0 };
     this.outcome = null;
     this.reason = '';
+    // Integer cents keep 3:2 blackjack payouts exact, including half dollars.
+    this.balance = STARTING_BALANCE;
+    this.wager = 0;
+    this.lastProfit = 0;
+    this.netProfit = 0;
+    return true;
   }
 
-  deal() {
-    if (this.state === 'playing') return false;
+  deal(wager = 2500) {
+    if (this.state === 'playing' || !Number.isSafeInteger(wager) || wager < MIN_WAGER || wager % MIN_WAGER !== 0 || wager > this.balance) return false;
     this.deck = this.deckFactory();
+    this.wager = wager;
+    this.balance -= wager;
     this.player = [];
     this.dealer = [];
     this.outcome = null;
@@ -54,7 +69,7 @@ export class BlackjackGame {
     const dealerNatural = handValue(this.dealer).total === 21;
     if (playerNatural && dealerNatural) this.finish('tie', 'You both have blackjack.');
     else if (dealerNatural) this.finish('loss', 'The dealer has blackjack.');
-    else if (playerNatural) this.finish('win', 'An ace and a 10-point card. Blackjack!');
+    else if (playerNatural) this.finish('win', 'An ace and a 10-point card. Blackjack!', true);
     return true;
   }
 
@@ -80,11 +95,15 @@ export class BlackjackGame {
     return true;
   }
 
-  finish(outcome, reason) {
+  finish(outcome, reason, blackjack = false) {
     if (this.state !== 'playing') return;
     this.state = 'over';
     this.outcome = outcome;
     this.reason = reason;
+    const returned = outcome === 'tie' ? this.wager : outcome === 'win' ? this.wager * (blackjack ? 2.5 : 2) : 0;
+    this.balance += returned;
+    this.lastProfit = returned - this.wager;
+    this.netProfit += this.lastProfit;
     this.stats[{ win: 'wins', loss: 'losses', tie: 'ties' }[outcome]]++;
   }
 }

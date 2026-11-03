@@ -1,4 +1,12 @@
 .blackjack { margin: 28px 0 40px; }
+.bj-bankroll { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border-top: 1px solid var(--rule); padding: 20px 0; }
+.bj-bankroll span { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+.bj-bankroll strong { display: block; font-size: clamp(17px, 2.8vw, 26px); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.bj-wager { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--rule); margin-top: 24px; padding-top: 20px; font-size: 13px; }
+.bj-wager input { width: 100px; min-height: 44px; border: 1px solid var(--rule); border-radius: 5px; background: var(--background); color: var(--foreground); font: inherit; padding: 10px; }
+.bj-wager input:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.bj-wager input:disabled { opacity: .5; }
+.bj-wager p { flex-basis: 100%; }
 .bj-scoreboard { display: flex; align-items: center; gap: 36px; border-block: 1px solid var(--rule); padding: 18px 0; margin-bottom: 28px; }
 .bj-scoreboard span, .bj-eyebrow, .bj-table-top { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
 .bj-scoreboard span, .bj-scoreboard strong { display: block; }
