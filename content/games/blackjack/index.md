@@ -1,7 +1,7 @@
 ---
 title: "Blackjack"
 draft: false
-description: "Play blackjack against the dealer with $1,000 in practice dollars, dollar scoring, and easy instructions."
+description: "Play blackjack with $1,000 in practice dollars, easy instructions, and a shared leaderboard for net winnings."
 blackjack: true
 ---
 

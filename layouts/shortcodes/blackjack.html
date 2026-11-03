@@ -11,6 +11,7 @@
     <p>Practice dollars only.<br>No real money.</p>
   </div>
   <div class="bj-layout">
+    <div class="bj-play-area">
     <div class="bj-table" tabindex="0" aria-label="Card table" aria-describedby="bj-keyboard">
       <div class="bj-table-top"><span>Vikum’s card room</span><span data-round>Ready to deal</span></div>
       <section class="bj-hand" aria-labelledby="bj-dealer-title">
@@ -38,6 +39,36 @@
       </div>
       <p id="bj-keyboard" class="bj-note">With the table focused: <kbd>H</kbd> hit · <kbd>S</kbd> stand · <kbd>N</kbd> next hand.</p>
       <noscript><p>Enable JavaScript to play. The instructions below are always available.</p></noscript>
+    </div>
+    <section class="bj-leaderboard" aria-labelledby="bj-leaderboard-title">
+      <div class="bj-board-heading">
+        <div><p class="bj-eyebrow">The card room</p><h2 id="bj-leaderboard-title">Leaderboard</h2></div>
+        <button type="button" data-bj-refresh>Refresh</button>
+      </div>
+      <p class="bj-note">Top 10 by net practice dollars won, starting from $1,000. Ties go to the earlier score.</p>
+      <p class="bj-board-status" data-bj-board-status role="status">Loading scores…</p>
+      <div class="bj-rankings-wrap">
+        <table class="bj-rankings">
+          <caption class="sr-only">Shared Blackjack leaderboard</caption>
+          <thead><tr><th scope="col">#</th><th scope="col">Player</th><th scope="col">Net won / lost</th><th scope="col">Hands</th></tr></thead>
+          <tbody data-bj-score-rows></tbody>
+        </table>
+      </div>
+      <form class="bj-score-form" data-bj-score-form>
+        <div class="bj-submission-totals">
+          <div><span>Your net winnings</span><strong data-bj-current-score>—</strong></div>
+          <div><span>Best submitted this session</span><strong data-bj-saved-score>—</strong></div>
+        </div>
+        <p class="bj-note" data-bj-score-hint>Finish a hand to submit your net winnings.</p>
+        <label for="bj-player-name">Display name</label>
+        <div class="bj-submit-controls">
+          <input id="bj-player-name" data-bj-name type="text" maxlength="20" required autocomplete="nickname" placeholder="Your name" aria-describedby="bj-public-name-note">
+          <button type="submit" class="bj-primary" data-bj-submit disabled>Submit my score</button>
+        </div>
+        <p id="bj-public-name-note" class="bj-note">Your name and score will be public. Each session keeps its best submitted score. Resetting or reloading starts a new session; saved scores stay on the board.</p>
+        <p class="bj-submit-status" data-bj-submit-status role="status" aria-live="polite"></p>
+      </form>
+    </section>
     </div>
     <aside class="bj-instructions" aria-labelledby="bj-instructions-title">
       <p class="bj-eyebrow">A quick guide</p>

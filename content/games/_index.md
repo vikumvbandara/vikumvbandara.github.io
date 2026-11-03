@@ -14,6 +14,6 @@ Keep the ball in play, bounce off the bumpers, and try to beat your best score. 
 
 ## Blackjack
 
-Take a seat at the card table. Get closer to 21 than the dealer without going over, and learn the rules as you play. Start with $1,000 in practice dollars and track how much you win or lose.
+Take a seat at the card table. Get closer to 21 than the dealer without going over, and learn the rules as you play. Start with $1,000 in practice dollars, track how much you win or lose, and submit your net winnings to the shared leaderboard.
 
 [Play blackjack →](blackjack/)

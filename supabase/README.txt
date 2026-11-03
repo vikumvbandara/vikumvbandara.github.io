@@ -36,3 +36,39 @@ per-player abuse controls. No login, email, or browser fingerprint is collected.
 
 Visuals follow the existing website CSS variables. The original synthesized music
 is opt-in, supports a volume slider, and stops while paused or in a hidden tab.
+
+BLACKJACK SHARED LEADERBOARD
+
+Migration: migrations/20261103033247_blackjack_leaderboard.sql (created with the
+Supabase CLI and applied to the same Personal Website project).
+Edge Function: functions/blackjack-leaderboard/index.ts, with handler.mjs.
+Public URL: https://tmsamlowojaxdtkvtejx.supabase.co/functions/v1/blackjack-leaderboard
+Frontend: static/js/blackjack-leaderboard.mjs.
+
+GET returns the top 10 display names, net winnings in integer cents, and the
+completed-hand count at submission. Equal scores use earliest submission.
+POST {action:"start"} returns a random session capability. POST {action:"submit",
+name,profit,hands} requires that capability in x-game-token. It is never included
+in rankings or stored in localStorage. Sessions expire after 24 hours. A reset or
+reload starts a new session. One row per session keeps the highest submitted
+profit; retries are idempotent and losses cannot replace the saved best.
+
+Deploy this Edge Function with verify_jwt=false: it performs its own session
+authentication for writes. Public reads/session creation are intentional. The
+function reads SUPABASE_SECRET_KEYS.default from the server environment, falling
+back to SUPABASE_SERVICE_ROLE_KEY for older projects. No server key is shipped to
+the website. Database functions are SECURITY INVOKER, executable by service_role
+only; anonymous and authenticated clients have no table or function privileges.
+The table has RLS enabled with only a server-role policy. Browser origins are
+limited to the production site and localhost:1313 for development. CORS is not an
+authentication mechanism; the session capability authorizes each score update.
+
+Validation bounds names, body size, cents, hand counts, session age and plausible
+maximum winnings. Starts are limited to 2,000/hour globally. This remains a casual
+honor-system leaderboard because gameplay happens in the browser; it is not
+suitable for cash prizes. Display names are public, unverified, and not unique.
+
+Tests: node --test tests/*.test.mjs; tests/blackjack-leaderboard.sql checks database
+rules and privileges in a transaction that is fully rolled back. Security
+advisors reported no Blackjack findings after deployment. Existing intentional
+Pinball advisories are documented above.

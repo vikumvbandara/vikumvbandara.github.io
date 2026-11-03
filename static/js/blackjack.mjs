@@ -1,8 +1,10 @@
 import { BlackjackGame, handValue, MIN_WAGER } from './blackjack-engine.mjs?v=2';
+import { BlackjackLeaderboard } from './blackjack-leaderboard.mjs?v=1';
 
 const root = document.querySelector('[data-blackjack]');
 if (root) {
   const game = new BlackjackGame();
+  const leaderboard = new BlackjackLeaderboard(root, 'https://tmsamlowojaxdtkvtejx.supabase.co/functions/v1/blackjack-leaderboard');
   const table = root.querySelector('.bj-table');
   const deal = root.querySelector('[data-deal]');
   const hit = root.querySelector('[data-hit]');
@@ -95,12 +97,13 @@ if (root) {
       root.querySelector('[data-result]').textContent = 'Take a seat.';
       root.querySelector('[data-message]').textContent = 'Choose your practice wager, then “Deal a hand” to begin.';
     }
+    leaderboard.update(game);
   }
 
   function act(action) {
     if (action === 'deal' && (game.state === 'playing' || game.balance < MIN_WAGER || !wager.reportValidity())) return;
     if (!game[action](action === 'deal' ? Number(wager.value) * 100 : undefined)) return;
-    if (action === 'reset') wager.value = '25';
+    if (action === 'reset') { wager.value = '25'; leaderboard.reset(); }
     render();
     // Keep keyboard focus on a stable element when action buttons become disabled.
     table.focus({ preventScroll: true });
