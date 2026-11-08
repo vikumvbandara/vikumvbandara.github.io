@@ -1,0 +1,236 @@
+% --- Academic CV - Vikum Bandara ---
+% Edited for clarity and consistency on November 8, 2026.
+% Compile with pdfLaTeX.
+% Libertine is preferred; Palatino is used if Libertine is unavailable.
+\documentclass[letterpaper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace,longtable,graphicx,hyphenat,hyperref,enumitem,amsmath,array}
+\usepackage[left=1in,right=1in,bottom=0.45in,top=0.5in]{geometry}
+\renewcommand{\baselinestretch}{1.08}
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{
+    colorlinks=true,
+    pageanchor=false,
+    linkcolor=RoyalBlue,
+    urlcolor=RoyalBlue,
+    pdftitle={Vikum Bandara - Academic CV},
+    pdfauthor={Vikum Bandara}
+}
+\IfFileExists{libertine.sty}{%
+    \usepackage{libertine}
+    \IfFileExists{newtxmath.sty}{\usepackage[libertine]{newtxmath}}{}
+}{%
+    \usepackage{mathpazo}
+}
+\pagenumbering{gobble}
+\setlength{\emergencystretch}{2em}
+\newcommand{\WebsiteURL}{https://vikumvbandara.github.io/}
+\newcommand{\PreprintURL}{https://vikumvbandara.github.io/papers/bulgarian-solitaire.pdf}
+\newcommand{\MastersProjectURL}{https://vikumvbandara.github.io/papers/masters-project.pdf}
+\newcommand{\UndergraduateThesisURL}{https://vikumvbandara.github.io/papers/undergraduate-thesis.pdf}
+\newcommand{\UpdatedDate}{November 8, 2026}
+\newcommand{\cvspace}{\noalign{\vskip 6pt}}
+
+\begin{document}
+\noindent{\Huge VIKUM BANDARA
+\hfill{\itshape\footnotesize Updated \UpdatedDate}}
+
+\vspace{0.5cm}
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Email}: \href{mailto:vbandar@clemson.edu}{vbandar@clemson.edu},
+\href{mailto:vikumb@sci.pdn.ac.lk}{vikumb@sci.pdn.ac.lk} &
+\textbf{Phone}: +1 (864) 765-4259 \\
+\textbf{Location}: Central, SC 29630, USA &
+\textbf{Alternate phone}: +94 77 270 6342 \\
+\multicolumn{2}{l}{\textbf{Website}: \href{\WebsiteURL}{Personal website}} \\
+\end{tabular}
+\end{center}
+
+\setlength{\tabcolsep}{8pt}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\setlist[itemize]{label=\textbullet,noitemsep,leftmargin=*,topsep=3pt,parsep=0pt}
+\begin{longtable}[t]{@{}>{\raggedright\arraybackslash}p{1.3in}>{\raggedright\arraybackslash}p{4.8in}@{}}
+
+\textbf{\color{OliveGreen}{Summary}}
+& Mathematics researcher and university instructor working in combinatorics,
+discrete dynamical systems, graph theory, and cryptography. Uses Python to
+explore examples, visualize structures, and test conjectures. Coauthor of two
+journal articles on cryptography and a submitted manuscript on generalizations of Bulgarian solitaire. \\
+\cvspace
+
+\textbf{\color{OliveGreen}{Education and}}
+& \textbf{Clemson University} \hfill Clemson, SC, USA \\*
+\textbf{\color{OliveGreen}{Training}}
+& Master of Science in Mathematical Sciences \hfill December 2025 \\*
+& Research focus: combinatorics and discrete dynamical systems. \\
+& Cumulative graduate GPA: 3.57/4.00 (through Spring 2026). \\
+& Passed the Operations Research preliminary examination for PhD candidacy. \\
+& Relevant coursework: Probability, Stochastic Processes,
+Data Analysis, Matrix Analysis,
+Mathematical Programming,
+Advanced Linear Programming,
+Discrete Optimization,
+Network Flow Programming,
+Abstract Algebra,
+Introduction to Dynamical Systems Theory,
+Combinatorial Analysis,
+Cryptography and
+Theory of Graphs.\\
+\cvspace
+
+& \textbf{University of Peradeniya} \hfill Peradeniya, Sri Lanka \\*
+& Bachelor of Science (Hons) in Mathematics \hfill September 2022 \\*
+& Major: mathematics (pure and applied); minor: physics. \\
+& Mathematics GPA: 3.77/4.00; overall GPA: 3.66/4.00. Four year degree. \\
+\cvspace
+
+& \textbf{G.C.E. Advanced Level (Physical Science)} \hfill Sri Lanka \\*
+& Mathematics: A; Physics: B; Chemistry: C \hfill December 2016 \\
+\cvspace
+
+& \textbf{IELTS Academic (2022)} \\*
+& Overall: 7.0 (Reading: 8.0; Writing: 6.5; Listening: 7.0; Speaking: 6.5). \\
+\cvspace
+
+\textbf{\color{OliveGreen}{Research Interests}}
+& Algebraic and combinatorial structures in discrete dynamical systems;
+orbit structure and permutation actions; labeled configurations;
+enumerative combinatorics; graph theory; cryptography; number theory;
+computational exploration. \\
+\cvspace
+
+\textbf{\color{OliveGreen}{Publications and Preprints}}
+& \textbf{V. Bandara} and S. Poznanovi\'{c},
+\href{\PreprintURL}{\emph{Bulgarian Solitaire with distinguishable cells}}.
+Preprint; submitted for publication. \\
+\cvspace
+
+& R. Ranasinghe and \textbf{V. Bandara},
+\href{https://doi.org/10.47974/JDMSC-2232}
+{\emph{Collatz conjecture--driven cryptographic framework}}.
+Journal of Discrete Mathematical Sciences \& Cryptography,
+29(7), 2621--2640, 2026.
+\href{https://doi.org/10.47974/JDMSC-2232}{doi:10.47974/JDMSC-2232}. \\
+\cvspace
+
+& P. G. R. S. Ranasinghe, \textbf{R. M. V. V. Bandara}, and
+A. M. S. L. K. Athapaththu,
+\href{https://doi.org/10.4038/jnsfsr.v52i4.12196}
+{\emph{Symmetric encryption using snake graphs and supermagic covering}}.
+Journal of the National Science Foundation of Sri Lanka,
+52(4), 435--440, 2024.
+\href{https://doi.org/10.4038/jnsfsr.v52i4.12196}{doi:10.4038/jnsfsr.v52i4.12196}. \\
+\cvspace
+
+
+
+& \textbf{V. Bandara} and R. Ranasinghe,
+\emph{Novel Cryptographic Scheme Based on the Collatz Conjecture}.
+RESCON Research Conference, 2022. \\
+\cvspace
+
+\textbf{\color{OliveGreen}{Research}}
+& \textbf{Research Project in Combinatorics}, Clemson University \\*
+& \href{\MastersProjectURL}{Master's project (PDF)} \\*
+& \begin{itemize}
+    \item Investigated generalizations of Bulgarian solitaire with
+    Dr.\ Svetlana Poznanovi\'{c}.
+    \item Used Python to visualize orbits and observed that a configuration
+    can return to its original shape before individual cards return to
+    their original positions.
+    \item Developed a coloring algorithm on Ferrers diagrams that connects
+    labeled cell movement to permutation cycles and orbit sizes.
+    \item Coauthored
+    \href{\PreprintURL}{\emph{Bulgarian Solitaire with distinguishable cells}},
+    submitted for publication.
+\end{itemize} \\
+\cvspace
+
+& \textbf{Final-Year Research Project}, University of Peradeniya \\*
+& \href{\UndergraduateThesisURL}{Undergraduate thesis (PDF)} \\*
+& \begin{itemize}
+    \item Studied relationships among Collatz sequences with
+    Dr.\ Rajitha Ranasinghe.
+    \item Implemented a proposed cryptographic scheme in Python
+    using the behavior of Collatz sequences.
+    \item Coauthored the resulting paper,
+    \emph{Collatz conjecture--driven cryptographic framework} (2026).
+\end{itemize} \\
+\cvspace
+
+& \textbf{Additional Research Projects}, University of Peradeniya \\*
+& \begin{itemize}
+    \item \textbf{Cryptographic Scheme Based on Graph Theory}
+    (October 2022--2023): Studied snake vertex labelings and supermagic
+    coverings of wheel graphs for symmetric encryption. This work led to
+    \emph{Symmetric encryption using snake graphs and supermagic covering},
+    coauthored with P. G. R. S. Ranasinghe and
+    A. M. S. L. K. Athapaththu (2024).
+
+    \item \textbf{Constructive Approach to the Collatz Conjecture}
+    (June 2021--2023): Constructed a framework for comparing Collatz
+    sequences and studied its behavior on odd positive integers.
+
+    \item \textbf{Novel Cryptographic Scheme Based on the Collatz Conjecture}
+    (June 2021--2023): Developed a symmetric encryption and decryption
+    algorithm based on Collatz sequences. Presented this work at RESCON 2022.
+\end{itemize} \\
+\cvspace
+
+% Begin the teaching and professional experience section on a new page.
+\noalign{\penalty -10000}
+\textbf{\color{OliveGreen}{Experience}}
+& \textbf{Graduate Teacher of Record}, Clemson University \\*
+& January 2025--Present \\*
+& MATH 1020 -- Business Calculus I \\
+\cvspace
+
+& \textbf{Graduate Teaching Assistant}, Clemson University \\*
+& August 2023--December 2024 \\*
+& MATH 1040 -- Precalculus and Introductory Differential Calculus;
+MATH 1080 -- Calculus of One Variable II;
+MATH 2080 -- Introduction to Ordinary Differential Equations;
+MATH 3110 -- Linear Algebra \\
+\cvspace
+
+& \textbf{Teaching Assistant}, University of Peradeniya \\*
+& September 2022--April 2023 \\
+\cvspace
+
+& \textbf{Venue Coordinator and Presenter}, \hfill 2022 \\*
+& SURS Science Undergraduate Research Symposium \\
+\cvspace
+
+& \textbf{Academic Coordinator and Presenter}, \hfill 2022 \\*
+& RESCON Research Conference \\
+\cvspace
+
+\textbf{\color{OliveGreen}{Skills}}
+& \textbf{Programming:} Python (computational experiments,
+visualization, and cryptographic implementation). \\
+& \textbf{Additional tools (familiar):} MATLAB, Julia, Gurobi, RStudio. \\
+& \textbf{Technical writing:} \LaTeX. \\
+& \textbf{Languages:} English and Sinhala. \\
+\cvspace
+
+\textbf{\color{OliveGreen}{References}}
+& \textbf{Dr.\ P. G. R. S. Ranasinghe}, \\*
+& Head of the Department and Senior Lecturer, Department of Mathematics,
+University of Peradeniya, Sri Lanka. \\*
+& \href{mailto:rajithamath@sci.pdn.ac.lk}{rajithamath@sci.pdn.ac.lk};
++94 70 558 0514. \\
+\cvspace
+
+& \textbf{Dr.\ Svetlana Poznanovi\'{c}}, \\*
+& Professor and Associate Director for Mathematics,
+School of Mathematical and Statistical Sciences,
+Clemson University, SC 29634, USA. \\*
+& \href{mailto:spoznan@clemson.edu}{spoznan@clemson.edu};
++1 (864) 656-0412. \\
+
+\end{longtable}
+\end{document}
+

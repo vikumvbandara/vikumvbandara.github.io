@@ -117,4 +117,4 @@ Alongside my academic work, I’m interested in applying mathematical and comput
 
 I welcome conversations about mathematics, research, teaching, and computational projects. You can reach me at [vbandar@clemson.edu](mailto:vbandar@clemson.edu).
 
-{{< vikum-document path="papers/vikum-bandara-cv.pdf?v=20261105" label="Download my CV" >}}
+{{< vikum-document path="papers/vikum-bandara-cv.pdf?v=20261108" label="Download my CV" >}}
