@@ -88,6 +88,10 @@ At the University of Peradeniya, I worked with Dr. Rajitha Ranasinghe on encrypt
 
 {{< vikum-document path="papers/collatz-cryptography.pdf" label="Collatz conjecture–driven cryptographic framework" meta="Journal of Discrete Mathematical Sciences & Cryptography · 2026" >}}
 
+My undergraduate thesis, *A Novel Cryptographic Scheme Based on the Collatz Conjecture*, led to this Collatz paper.
+
+{{< vikum-document path="papers/undergraduate-thesis.pdf" label="Read my undergraduate thesis" meta="B.Sc. project report · University of Peradeniya · August 2022" >}}
+
 {{< vikum-document path="papers/snake-graphs-encryption.pdf" label="Symmetric encryption using snake graphs and supermagic covering" meta="Journal of the National Science Foundation of Sri Lanka · 2024" >}}
 
 ## Teaching
