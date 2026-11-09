@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>Vikum Bandara</title>
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#1d1e20" stroke="#424448" stroke-width="2"/>
+  <path d="M10 19 20 45 30 19" stroke="#e7e7e7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M38 19V45H46C56 45 56 32 46 32H38M46 32C56 32 56 19 46 19H38" stroke="#7fc5fc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
