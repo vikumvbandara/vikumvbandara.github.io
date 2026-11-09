@@ -80,7 +80,7 @@ Before Clemson, I completed my **B.Sc. (Honours) in Mathematics at the Universit
 
 Working with Dr. Svetlana Poznanović, I study what happens when we track individual cells in Bulgarian solitaire. A configuration can return to its original shape before its labeled cells return to their original positions. Our coauthored preprint connects these movements with Ferrers diagrams, permutation cycles, and periodic orbit lengths.
 
-{{< vikum-document path="papers/bulgarian-solitaire.pdf" label="Read the preprint" >}}
+{{< vikum-document path="papers/bulgarian-solitaire.pdf?v=20261108" label="Read the preprint" meta="Preprint · Official arXiv link forthcoming" >}}
 
 ### Cryptography and graph theory
 
