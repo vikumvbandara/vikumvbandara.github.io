@@ -80,7 +80,7 @@ Before Clemson, I completed my **B.Sc. (Honours) in Mathematics at the Universit
 
 Working with Dr. Svetlana Poznanović, I study what happens when we track individual cells in Bulgarian solitaire. A configuration can return to its original shape before its labeled cells return to their original positions. Our coauthored preprint connects these movements with Ferrers diagrams, permutation cycles, and periodic orbit lengths.
 
-{{< vikum-document path="papers/bulgarian-solitaire.pdf?v=20261108" label="Read the preprint" meta="Preprint · Official arXiv link forthcoming" >}}
+{{< vikum-document path="https://arxiv.org/pdf/2611.10437" label="Read the preprint" meta="Preprint · arXiv:2611.10437 · 2026" >}}
 
 ### Cryptography and graph theory
 
@@ -117,4 +117,4 @@ Alongside my academic work, I’m interested in applying mathematical and comput
 
 I welcome conversations about mathematics, research, teaching, and computational projects. You can reach me at [vbandar@clemson.edu](mailto:vbandar@clemson.edu).
 
-{{< vikum-document path="papers/vikum-bandara-cv.pdf?v=20261108" label="Download my CV" >}}
+{{< vikum-document path="papers/vikum-bandara-cv.pdf?v=20261110" label="Download my CV" >}}

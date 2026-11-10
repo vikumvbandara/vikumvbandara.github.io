@@ -6,7 +6,7 @@ manuscript: true
 
 *From “Bulgarian solitaire with distinguishable cells,” by Vikum Bandara and Svetlana Poznanović.*
 
-{{< vikum-document path="papers/bulgarian-solitaire.pdf?v=20261108" label="Read the preprint" meta="Preprint · Official arXiv link forthcoming" >}}
+{{< vikum-document path="https://arxiv.org/pdf/2611.10437" label="Read the preprint" meta="Preprint · arXiv:2611.10437 · 2026" >}}
 
 ## 1 Introduction
 
@@ -18,4 +18,4 @@ manuscript: true
 
 ## Full preprint
 
-{{< vikum-document path="papers/bulgarian-solitaire.pdf?v=20261108" label="Bulgarian solitaire with distinguishable cells" >}}
+{{< vikum-document path="https://arxiv.org/pdf/2611.10437" label="Bulgarian solitaire with distinguishable cells" >}}
