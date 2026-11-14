@@ -15,3 +15,5 @@
 .agents-grid[data-method=rules]{grid-template-columns:repeat(4,minmax(0,1fr))}.optional-setup{font-size:10px;color:var(--muted);line-height:1.8;margin-top:12px}
 @media(max-width:1000px){.agents-grid[data-method=rules]{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.agents-grid[data-method=rules]{grid-template-columns:1fr}}
+
+.website-note{display:block}.website-note span,.website-note strong{display:inline}
