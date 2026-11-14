@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10141c">
+  <title>Satoshi Signal · Bitcoin research desk</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to analysis</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Satoshi Signal home"><span class="brand-icon" aria-hidden="true">₿</span><span>Satoshi<span class="brand-light"> Signal</span><small>BITCOIN RESEARCH DESK</small></span></a>
+    <div class="header-meta"><span class="research-tag">PAPER RESEARCH</span><span class="connection" id="connection"><span class="status-dot"></span><span id="connection-text">Connecting</span></span></div>
+  </header>
+  <main id="main">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div><p class="eyebrow">MULTIPLE PERSPECTIVES. ONE CLEAR SIGNAL.</p><h1 id="page-title">Clarity before conviction<span>.</span></h1><p class="page-subtitle" id="strategy-description">Free rule-based agents evaluate Bitcoin for accumulation over months.</p></div>
+      <div class="heading-badge"><span class="bitcoin-small">₿</span><div><strong>Bitcoin</strong><span>BTC / USD</span></div></div>
+    </section>
+
+    <div class="notice"><span>Buy threshold: <strong>60/100</strong>. Trend, momentum, and risk checks must also pass. History is saved in this browser. Telegram monitoring runs separately in the desktop app. <a href="/">Back to Vikum’s website ↗</a></span></div>
+    <section class="control-bar" aria-label="Analysis settings">
+      <div class="control-group"><label for="strategy">Strategy</label><select id="strategy"><option value="accumulation">Long-term accumulation</option><option value="daytrade">Day trading</option></select><span id="interval-label" class="interval-label">Daily candles</span></div>
+      <div class="mode-switch" role="group" aria-label="Data source"><button id="live-mode" class="mode-button active" aria-pressed="true">Live market</button><button id="demo-mode" class="mode-button" aria-pressed="false">Try demo</button></div>
+      <label class="auto-label"><input id="auto-refresh" type="checkbox" checked><span id="auto-refresh-label">Refresh view every 5 min</span></label>
+      <button id="analyze" class="button button-primary"><span class="refresh-icon" aria-hidden="true">↗</span><span id="analyze-label">Run analysis</span></button>
+    </section>
+    <section class="setup-panel panel" hidden aria-labelledby="setup-title">
+      <div class="setup-heading"><div><p class="eyebrow">YOUR RESEARCH CONNECTIONS</p><h2 id="setup-title">Free analysis & Telegram alerts</h2></div><button id="refresh-status" class="button button-secondary">Refresh status ↻</button></div>
+      <div class="setup-statuses"><span id="ai-setup-status">Free rule-based agents</span><span id="telegram-setup-status">Telegram: checking setup…</span><span id="model-label">No paid API needed</span></div>
+      <div class="monitor-row"><label class="monitor-label"><input id="monitor-enabled" type="checkbox" disabled><span id="monitor-label">Check daily and send buy alerts</span></label><button id="test-alert" class="button button-secondary" disabled>Send test alert</button></div>
+      <p class="setup-help" id="setup-help">Analysis runs locally with public market data. No AI API key or paid model calls are needed. Connect Telegram only if you want phone alerts. Keep this computer awake and the app running for monitoring.</p>
+      <p id="daytrade-cost" class="daytrade-cost" hidden><strong>Day trading monitoring can run 96 reviews per day:</strong> up to 384 model requests plus web searches when enabled for 24 hours. It is off by default and billed to your API account. Alerts are limited to one per hour.</p>
+      <p id="monitor-status" class="monitor-status">Monitoring is off.</p><p id="other-monitors" class="monitor-status"></p><p id="setup-message" class="setup-message" role="status" hidden></p>
+      <details id="setup-instructions"><summary>Connect Telegram for phone alerts</summary><ol><li>Create a Telegram bot with <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">@BotFather</a>, then send <code>/start</code> to your bot.</li><li>Open <code>.env</code> in this project folder. Add <code>TELEGRAM_BOT_TOKEN</code> and your <code>TELEGRAM_CHAT_ID</code>. The project README explains how to find your chat ID. Keep tokens in that local file.</li><li>Use <code>Stop-Signal.cmd</code> then <code>Start-Signal.cmd</code> to restart, refresh status, and send a test alert. Enable monitoring separately for each strategy when ready.</li></ol><p class="optional-setup">The dashboard works without Telegram. Free rule-based analysis needs no paid API.</p><details class="optional-setup"><summary>Optional paid OpenAI mode</summary><p>To opt into paid AI research, set <code>ANALYSIS_METHOD=openai</code> and <code>OPENAI_API_KEY</code> in your local <code>.env</code>, then restart. An <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">OpenAI API key</a> and API billing are required only for that mode. Keep <code>ANALYSIS_METHOD=rules</code> for free analysis.</p></details></details>
+    </section>
+    <div id="demo-banner" class="notice demo-notice" hidden><span class="notice-icon" aria-hidden="true">◈</span><div><strong id="demo-title">Demo mode — rules applied to synthetic market data</strong><span id="demo-description">Demo results never trigger alerts. Any enabled live monitoring continues separately. These prices and signals do not describe the real Bitcoin market.</span></div></div>
+    <div id="error-banner" class="notice error-notice" role="alert" hidden></div>
+
+    <section class="overview-grid" aria-label="Market overview" aria-busy="true" id="overview">
+      <article class="signal-panel panel">
+        <div class="section-top"><p class="eyebrow">THE COLLECTIVE VIEW</p><span class="tiny-tag" id="signal-mode">LIVE ANALYSIS</span></div>
+        <div class="signal-line"><span id="signal-icon" class="signal-icon" aria-hidden="true">◎</span><h2 id="signal-title">Reading the market</h2></div>
+        <p id="signal-summary" class="signal-summary">Loading completed candles and evaluating the rules.</p>
+        <div class="agreement-heading"><span id="agreement-label">Weighted rule alignment</span><strong id="agreement-value">—<span> / 100</span></strong></div>
+        <div class="agreement-track" role="meter" aria-label="Weighted agent agreement" aria-valuemin="0" aria-valuemax="100" id="agreement-meter"><div id="agreement-fill"></div></div>
+        <p class="agreement-help" id="agreement-help">Alignment of trading rules, not a probability of profit.</p>
+        <div class="signal-footer"><span class="small-dot" aria-hidden="true"></span><span id="signal-footnote">All signals require a complete data and risk review.</span></div>
+      </article>
+      <article class="chart-panel panel">
+        <div class="chart-top"><div><p class="eyebrow">LAST COMPLETED CLOSE</p><div class="price-row"><h2 id="price">—</h2><span id="price-change" class="price-change">—</span></div></div><div class="chart-legend"><span><i class="legend-price"></i>BTC / USD</span><span><i class="legend-average"></i>50-bar average</span></div></div>
+        <div id="price-chart" class="price-chart"><div class="chart-empty">Waiting for market data</div></div>
+        <div class="chart-footer"><span id="chart-range">Last 120 completed candles</span><span id="source-label">Source: connecting</span></div>
+      </article>
+    </section>
+
+    <div class="data-meta"><span id="closed-time">Completed candle: —</span><span id="expiry-time">Review expires: —</span><span id="refresh-time">Last checked: —</span><span id="next-refresh">Next refresh: after analysis</span></div>
+
+    <section class="metrics-grid" aria-label="Key market indicators">
+      <article class="metric-card"><div class="metric-label">Momentum <span>RSI · 14</span></div><strong id="rsi-value">—</strong><p id="rsi-detail">Waiting for analysis</p></article>
+      <article class="metric-card"><div class="metric-label">Market trend <span>SMA · 200</span></div><strong id="trend-value">—</strong><p id="trend-detail">Waiting for analysis</p></article>
+      <article class="metric-card"><div class="metric-label">Participation <span>VOLUME</span></div><strong id="volume-value">—</strong><p>Relative to recent typical volume</p></article>
+      <article class="metric-card"><div class="metric-label">Volatility <span>ATR · 14</span></div><strong id="atr-value">—</strong><p>Typical candle range as % of price</p></article>
+    </section>
+
+    <section class="agents-section" aria-labelledby="agents-title"><div class="section-heading"><div><p class="eyebrow" id="agents-eyebrow">FREE RULE-BASED AGENTS</p><h2 id="agents-title">Four agents. Every rule visible.</h2></div><span class="muted section-note" id="agents-note">Three weighted votes + one risk check</span></div><div id="agents-grid" class="agents-grid" data-method="rules"><div class="empty-panel">The agents’ reasoning will appear here.</div></div></section>
+
+    <section class="research-panel panel" id="research-panel" aria-labelledby="research-title" hidden><div class="section-heading compact"><div><p class="eyebrow">THE FOURTH PERSPECTIVE</p><h2 id="research-title">News & macro research</h2></div><span id="research-date" class="tiny-tag">AWAITING REVIEW</span></div><p id="research-summary" class="research-summary">Run an AI review for a current, cited briefing that informs the analysts.</p><div id="research-sources" class="research-sources" aria-label="Research sources"></div></section>
+    <details class="market-evidence panel" id="market-evidence-panel" hidden><summary>Inspect the underlying market evidence <span aria-hidden="true">+</span></summary><div id="market-agents" class="market-agents"><p class="empty-copy">Technical evidence will appear after market data loads.</p></div></details>
+
+    <section class="details-grid">
+      <article class="panel gate-panel"><div class="section-heading compact"><div><p class="eyebrow">BEFORE A BUY SIGNAL</p><h2>Quality & risk checks</h2></div><span id="gates-count" class="tiny-tag">PENDING</span></div><div id="gates-list" class="gates-list"><p class="empty-copy">Waiting for the data review.</p></div></article>
+      <article class="panel history-panel"><div class="section-heading compact"><div><p class="eyebrow">YOUR RESEARCH TRAIL</p><h2>Recent signals</h2></div><button id="download" class="button button-secondary" disabled aria-label="Download this analysis as JSON">Export ↗</button></div><p class="history-caption" id="history-caption">Recorded on this computer, separated by mode and interval.</p><div class="table-wrap"><table><thead><tr><th>Checked</th><th>Signal</th><th>Score</th><th>Close</th></tr></thead><tbody id="history-body"><tr><td colspan="4" class="table-empty">No signals recorded yet.</td></tr></tbody></table></div></article>
+    </section>
+
+    <details class="methodology panel"><summary><span><span class="methodology-icon" aria-hidden="true">ⓘ</span>How to read this dashboard</span><span class="details-chevron" aria-hidden="true">+</span></summary><div class="methodology-body"><div><h3>Evidence you can inspect</h3><p id="method-evidence">Four rule-based agents evaluate trend, momentum, participation, and risk using completed market candles. Every result follows fixed, inspectable thresholds. No AI model or news research is used in this mode.</p></div><div><h3>Signal labels</h3><p id="method-labels">Buy setup requires a weighted rule score of at least 60, bullish trend and momentum agents, and passing risk and data checks. Watch means partial support. Wait means no qualifying setup or a blocking concern. Unavailable means the market data cannot support analysis.</p></div><div><h3>A starting point for research</h3><p id="method-limitations">The score measures rule alignment, not the chance of a profitable trade. Agents share price and volume data, so their results can be correlated. Both strategies are unvalidated spot-buy research, with no trade execution. Test with historical and paper trading results before relying on signals.</p></div><div><h3>Freshness & alerts</h3><p id="method-freshness">Analysis uses completed daily candles, not the current live price. Local rules are recalculated as the view refreshes. Optional daily monitoring runs on this computer and sends eligible buy signals to Telegram. Demo results never trigger alerts.</p></div></div></details>
+    <footer class="page-footer"><span><strong>Satoshi Signal</strong> · Built for deliberate decisions.</span><span id="version-label">Research prototype</span></footer>
+  </main>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
