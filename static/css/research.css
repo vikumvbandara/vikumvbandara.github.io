@@ -28,3 +28,21 @@
 @media (max-width: 720px) {
   .research-model-grid { grid-template-columns: 1fr; }
 }
+
+.research-viewer-wrap {
+  margin: 24px 0 8px;
+  border: 1px solid rgba(127, 255, 212, 0.28);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f7f4ed;
+}
+.research-viewer {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 0;
+}
+.research-viewer-link { margin-top: 8px; }
+@media (max-width: 720px) {
+  .research-viewer { min-height: 820px; }
+}
