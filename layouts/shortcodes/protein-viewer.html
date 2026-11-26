@@ -1,0 +1,7 @@
+{{- $viewer := readFile "static/research/protein-buildings/index.html" -}}
+{{- $main := index (findRE `(?s)<main>.*?</main>` $viewer) 0 -}}
+{{- $script := index (findRE `(?s)<script>.*?</script>` $viewer) 0 -}}
+<div class="research-inline-viewer">
+  {{ $main | safeHTML }}
+  {{ $script | safeHTML }}
+</div>

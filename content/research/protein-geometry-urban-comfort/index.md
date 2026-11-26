@@ -14,11 +14,7 @@ The models are starting geometries, not finished buildings. They preserve a trac
 
 Use the viewer below to compare each experimental protein backbone with its architectural translation. Drag either panel to rotate both views, choose a structure, and use **Reset view** to return to the starting orientation.
 
-<div class="research-viewer-wrap">
-  <iframe class="research-viewer" src="research/protein-buildings/" title="Rotatable protein and building design viewer" loading="lazy"></iframe>
-</div>
-
-<p class="research-viewer-link"><a href="research/protein-buildings/">Open the rotatable viewer in a full page</a></p>
+{{< protein-viewer >}}
 
 ## Four 3D design studies
 

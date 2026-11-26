@@ -29,20 +29,47 @@
   .research-model-grid { grid-template-columns: 1fr; }
 }
 
-.research-viewer-wrap {
+.research-inline-viewer {
   margin: 24px 0 8px;
   border: 1px solid rgba(127, 255, 212, 0.28);
   border-radius: 6px;
   overflow: hidden;
   background: #f7f4ed;
 }
-.research-viewer {
+.research-inline-viewer main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 18px;
+}
+.research-inline-viewer h1 {
+  margin: 0;
+  font: 32px Georgia, serif;
+}
+.research-inline-viewer h2 {
+  margin: 12px 0 0;
+  font: 20px Georgia, serif;
+}
+.research-inline-viewer section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.research-inline-viewer canvas {
   display: block;
   width: 100%;
-  min-height: 720px;
+  min-height: 420px;
   border: 0;
+  background: #eaf0ed;
+  touch-action: none;
 }
-.research-viewer-link { margin-top: 8px; }
+.research-inline-viewer select,
+.research-inline-viewer button {
+  padding: 8px;
+}
+.research-inline-viewer p {
+  line-height: 1.5;
+}
 @media (max-width: 720px) {
-  .research-viewer { min-height: 820px; }
+  .research-inline-viewer section { grid-template-columns: 1fr; }
+  .research-inline-viewer canvas { min-height: 300px; }
 }
