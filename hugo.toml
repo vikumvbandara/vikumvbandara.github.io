@@ -4,4 +4,4 @@ title = 'Vikum Bandara'
 disableKinds = ['taxonomy', 'term', 'RSS']
 
 [markup.goldmark.renderer]
-  unsafe = false
+  unsafe = true

@@ -3,3 +3,28 @@
 .research-figure figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; }
 .research-equation { margin: 20px 0; text-align: center; overflow-x: auto; max-width: 100%; }
 .research-equation math { padding: 8px 0; }
+
+.research-model-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 34px;
+}
+.research-model-card {
+  border: 1px solid rgba(127, 255, 212, 0.28);
+  border-radius: 6px;
+  padding: 18px;
+  background: rgba(127, 255, 212, 0.035);
+}
+.research-model-card h3 { margin: 4px 0 10px; }
+.research-model-card p { margin: 0 0 12px; }
+.research-model-card a { font-size: 0.95rem; }
+.research-model-code {
+  color: #7fffd4;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 720px) {
+  .research-model-grid { grid-template-columns: 1fr; }
+}
