@@ -34,7 +34,8 @@
   border: 1px solid rgba(127, 255, 212, 0.28);
   border-radius: 6px;
   overflow: hidden;
-  background: #f7f4ed;
+  background: var(--background);
+  color: var(--foreground);
 }
 .research-inline-viewer main {
   max-width: 1150px;
@@ -59,12 +60,24 @@
   width: 100%;
   min-height: 420px;
   border: 0;
-  background: #eaf0ed;
+  background: var(--surface);
   touch-action: none;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
 }
 .research-inline-viewer select,
 .research-inline-viewer button {
   padding: 8px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--foreground);
+  font: inherit;
+}
+.research-inline-viewer button:hover,
+.research-inline-viewer select:focus-visible,
+.research-inline-viewer button:focus-visible {
+  border-color: var(--link);
 }
 .research-inline-viewer p {
   line-height: 1.5;
